@@ -9,7 +9,54 @@
   <body>
     <div class="container">
       <p class="question">Is Derina still pregnant?</p>
-      <p class="answer">Yes</p>
+      <p class="answer">In Progress...</p>
+      <p class="timer" id="timer"></p>
     </div>
+    <script>
+      function updateTimer() {
+        // November 4th, 2025 at 7:56am EST (EST is UTC-5)
+        const startDate = new Date('2025-11-04T07:56:00-05:00');
+        const now = new Date();
+
+        // Calculate difference in milliseconds
+        const diff = now - startDate;
+
+        if (diff < 0) {
+          // If the date hasn't arrived yet
+          document.getElementById('timer').textContent = 'Starting soon...';
+          return;
+        }
+
+        // Convert to time units
+        const seconds = Math.floor(diff / 1000);
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+
+        const displayDays = days;
+        const displayHours = hours % 24;
+        const displayMinutes = minutes % 60;
+        const displaySeconds = seconds % 60;
+
+        // Format the display
+        let timeString = '';
+        if (displayDays > 0) {
+          timeString += `${displayDays}d `;
+        }
+        if (displayHours > 0 || displayDays > 0) {
+          timeString += `${displayHours}h `;
+        }
+        if (displayMinutes > 0 || displayHours > 0 || displayDays > 0) {
+          timeString += `${displayMinutes}m `;
+        }
+        timeString += `${displaySeconds}s`;
+
+        document.getElementById('timer').textContent = timeString;
+      }
+
+      // Update immediately and then every second
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    </script>
   </body>
 </html>
