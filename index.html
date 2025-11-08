@@ -9,7 +9,31 @@
   <body>
     <div class="container">
       <p class="question">Is Derina still pregnant?</p>
-      <p class="answer">Yes</p>
+      <p class="answer">Not For Long 🤞</p>
+      <p class="timer" id="timer">00:00:00</p>
     </div>
+    <script>
+      // November 7, 2024 at 10:30pm ET (22:30)
+      const startDate = new Date('2024-11-07T22:30:00-05:00');
+
+      function updateTimer() {
+        const now = new Date();
+        const diff = now - startDate;
+
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const formatted =
+          String(hours).padStart(2, '0') + ':' +
+          String(minutes).padStart(2, '0') + ':' +
+          String(seconds).padStart(2, '0');
+
+        document.getElementById('timer').textContent = formatted;
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    </script>
   </body>
 </html>
