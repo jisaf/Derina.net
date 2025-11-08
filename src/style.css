@@ -41,9 +41,7 @@ body {
 }
 
 .timer {
-  font-size: clamp(1rem, 3vw, 1.25rem);
-  color: #2d5016;
-  font-weight: 500;
+  font-style: normal;
 }
 
 @media (max-width: 480px) {
